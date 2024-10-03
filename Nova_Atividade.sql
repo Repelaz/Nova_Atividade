@@ -67,8 +67,22 @@ WHERE v.nome = 'Dr. Pedro Lima')
 Escreva uma consulta para listar todos os medicamentos que 
 possuem uma descrição e cujo preço é inferior a 50 reais. */
 
+SELECT * FROM MEDICAMENTOS m 
+WHERE DESCRICAO IS NOT NULL AND PRECO < 50.00
 
+/* Listar Pacientes com Peso Entre Dois Valores
+Escreva uma consulta para listar todos os pacientes com peso entre 3 e 10 kg. */
 
+SELECT * FROM PACIENTE p 
+WHERE PESO BETWEEN 3 AND 10
+
+/* Buscar Pacientes de um Tutor e com Peso Superior a um Valor
+Escreva uma consulta para listar todos os pacientes que 
+pertencem ao tutor com o nome "Carlos Lima" e têm peso superior a 5 kg. */
+
+SELECT * FROM PACIENTE p 
+WHERE p.ID_TUTOR = (SELECT t.id_tutor FROM TUTOR t WHERE NOME = 'Carlos Lima')
+AND PESO > 5
 
 
 
