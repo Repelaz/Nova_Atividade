@@ -84,12 +84,43 @@ SELECT * FROM PACIENTE p
 WHERE p.ID_TUTOR = (SELECT t.id_tutor FROM TUTOR t WHERE NOME = 'Carlos Lima')
 AND PESO > 5
 
+/* Listar Pacientes de Especie 'Cão' com Peso Inferior a 7 kg
+Escreva uma consulta para listar todos os 
+pacientes da espécie "Cão" com peso inferior a 7 kg. */
+
+SELECT * FROM PACIENTE p 
+WHERE p.ESPECIE = 'Cão' AND PESO < 7
+
+/* Listar Agendamentos de um Período com Peso dos Pacientes
+Escreva uma consulta para listar todos os agendamentos realizados entre 1º 
+de abril de 2024 e 30 de junho de 2024, e mostrar o nome do 
+paciente e o peso do paciente associado. */
+
+SELECT a.*
+     , (SELECT p.nome FROM PACIENTE p WHERE p.id_paciente = a.ID_PACIENTE )
+     , (SELECT p.PESO FROM PACIENTE p WHERE p.id_paciente = a.ID_PACIENTE )
+  FROM AGENDAMENTO a 
+ WHERE a.DATA_HORA BETWEEN '2024-04-01' AND '2024-06-30' 
+
+/* Listar Pacientes que Não Tiveram Consultas
+Escreva uma consulta para listar todos os pacientes 
+que não têm nenhum agendamento registrado. */
+
+SELECT p.* 
+FROM PACIENTE p 
+WHERE p.ID_PACIENTE NOT IN (SELECT a.ID_PACIENTE FROM AGENDAMENTO a)
 
 
+/* Listar Pacientes que Não Tiveram Consultas por periodo
+Escreva uma consulta para listar todos os pacientes que não têm nenhum 
+agendamento registrado no período de 01/01/2024 até 15/01/2024 */
 
-
-
-
+SELECT * FROM PACIENTE p 
+WHERE p.ID_PACIENTE NOT IN (
+		SELECT a.id_paciente
+		FROM AGENDAMENTO a 
+		WHERE a.data_hora BETWEEN '2024-01-01' AND '2024-01-15'
+)
 
 
 
