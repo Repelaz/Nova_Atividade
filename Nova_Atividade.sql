@@ -96,7 +96,7 @@ Escreva uma consulta para listar todos os agendamentos realizados entre 1º
 de abril de 2024 e 30 de junho de 2024, e mostrar o nome do 
 paciente e o peso do paciente associado. */
 
-SELECT a.*
+SELECT *
      , (SELECT p.nome FROM PACIENTE p WHERE p.id_paciente = a.ID_PACIENTE )
      , (SELECT p.PESO FROM PACIENTE p WHERE p.id_paciente = a.ID_PACIENTE )
   FROM AGENDAMENTO a 
@@ -106,8 +106,7 @@ SELECT a.*
 Escreva uma consulta para listar todos os pacientes 
 que não têm nenhum agendamento registrado. */
 
-SELECT p.* 
-FROM PACIENTE p 
+SELECT * FROM PACIENTE p 
 WHERE p.ID_PACIENTE NOT IN (SELECT a.ID_PACIENTE FROM AGENDAMENTO a)
 
 
@@ -121,114 +120,3 @@ WHERE p.ID_PACIENTE NOT IN (
 		FROM AGENDAMENTO a 
 		WHERE a.data_hora BETWEEN '2024-01-01' AND '2024-01-15'
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
